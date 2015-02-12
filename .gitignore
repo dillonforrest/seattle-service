@@ -1,0 +1,10 @@
+target/
+tmp/
+logs/
+pom.xml
+/lib/
+/classes/
+/checkouts/
+*.iml
+.*
+!.gitignore
