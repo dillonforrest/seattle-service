@@ -1,10 +1,10 @@
-(ns streaker-service.endpoints
-  (:require [streaker-service.models.community]
-            [streaker-service.models.neighborhood]
-            [streaker-service.models.district]
-            [streaker-service.models.community-type]
-            [streaker-service.models.community-orgtype]
-            [streaker-service.models.region]
+(ns seattle-service.endpoints
+  (:require [seattle-service.models.community]
+            [seattle-service.models.neighborhood]
+            [seattle-service.models.district]
+            [seattle-service.models.community-type]
+            [seattle-service.models.community-orgtype]
+            [seattle-service.models.region]
             [datomic.api :as d]))
 
 
@@ -12,31 +12,31 @@
   ;; Should also store :rel and :prompt here.
   ;; For now, rel must line up by hand with the key here
   {"communities" ['[:find ?e :where [?e :community/name]]
-                  streaker-service.models.community/typeinfo]
+                  seattle-service.models.community/typeinfo]
 
    "neighborhoods" ['[:find ?e :where [?e :neighborhood/name]]
-                    streaker-service.models.neighborhood/typeinfo]
+                    seattle-service.models.neighborhood/typeinfo]
 
    "districts" ['[:find ?e :where [?e :district/name]]
-                streaker-service.models.district/typeinfo]
+                seattle-service.models.district/typeinfo]
 
    "enums/community.orgtype" ['[:find ?id
                                 :where [?id :db/ident ?ident]
                                 [(namespace ?ident) ?ns]
                                 [(= ?ns "community.orgtype")]]
-                              streaker-service.models.community-orgtype/typeinfo]
+                              seattle-service.models.community-orgtype/typeinfo]
 
    "enums/community.type" ['[:find ?id
                              :where [?id :db/ident ?ident]
                              [(namespace ?ident) ?ns]
                              [(= ?ns "community.type")]]
-                           streaker-service.models.community-type/typeinfo]
+                           seattle-service.models.community-type/typeinfo]
 
    "enums/region" ['[:find ?id
                      :where [?id :db/ident ?ident]
                      [(namespace ?ident) ?ns]
                      [(= ?ns "region")]]
-                   streaker-service.models.region/typeinfo]
+                   seattle-service.models.region/typeinfo]
 
    })
 

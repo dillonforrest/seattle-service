@@ -1,4 +1,4 @@
-(ns streaker-service.models.community-type)
+(ns seattle-service.models.community-type)
 
 
 (defn typeinfo [& [instance]]

@@ -1,4 +1,4 @@
-(ns streaker-service.models.neighborhood)
+(ns seattle-service.models.neighborhood)
 
 (defn typeinfo [& [instance]]
   [{:name :neighborhood/name :prompt "Name" :datatype :string :set false}

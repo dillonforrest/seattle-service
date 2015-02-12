@@ -4,16 +4,16 @@
             [datomico.db :as db]
             [io.pedestal.http :as bootstrap]
             [hypercrud-service.datomic-util :refer [with-db-as-of latest-tx]]
-            [streaker-service.service]
-            [streaker-service.routes]
-            [streaker-service.server]
-            [streaker-service.service-instance]
+            [seattle-service.service :as service]
+            [seattle-service.routes :as routes]
+            [seattle-service.server :as server]
+            [seattle-service.service-instance :as service-instance]
             [ns-tracker.core :as tracker]))
 
-(def service (-> streaker-service.service/service ;; start with production configuration
+(def service (-> service/service ;; start with production configuration
                  (merge  {:env :dev
                           ::bootstrap/join? false
-                          ::bootstrap/routes #(deref #'streaker-service.routes/routes)
+                          ::bootstrap/routes #(deref #'routes/routes)
                           ::bootstrap/allowed-origins {:creds true
                                                        :allowed-origins (constantly true)}})
                  (bootstrap/default-interceptors)
@@ -21,11 +21,11 @@
 
 (defn start
   [& [opts]]
-  (streaker-service.server/create-server (merge service opts))
-  (bootstrap/start streaker-service.service-instance/service-instance))
+  (server/create-server (merge service opts))
+  (bootstrap/start service-instance/service-instance))
 
 (defn stop []
-  (bootstrap/stop streaker-service.service-instance/service-instance))
+  (bootstrap/stop service-instance/service-instance))
 
 (defn restart []
   (stop)

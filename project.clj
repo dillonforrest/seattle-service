@@ -1,4 +1,4 @@
-(defproject com.dgetz/seattle-service "0.0.1-SNAPSHOT"
+(defproject org.hypercrud/seattle-service "0.0.1-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"

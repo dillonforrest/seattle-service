@@ -1,4 +1,4 @@
-(ns streaker-service.models.community)
+(ns seattle-service.models.community)
 
 
 (comment

@@ -1,3 +1,3 @@
-(ns streaker-service.db)
+(ns seattle-service.db)
 
 (def conn (atom nil))

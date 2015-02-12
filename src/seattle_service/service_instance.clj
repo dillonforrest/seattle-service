@@ -1,4 +1,4 @@
-(ns streaker-service.service-instance)
+(ns seattle-service.service-instance)
 
 
 (defonce service-instance nil)

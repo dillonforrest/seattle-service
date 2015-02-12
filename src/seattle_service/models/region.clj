@@ -1,4 +1,4 @@
-(ns streaker-service.models.region)
+(ns seattle-service.models.region)
 
 
 (defn typeinfo [& [instance]]

@@ -1,4 +1,4 @@
-(ns streaker-service.routes
+(ns seattle-service.routes
   (:require [io.pedestal.http.body-params :as body-params]
             [io.pedestal.http.route.definition :refer [expand-routes]]
             [hypercrud-service.pedestal-util :as pedestal-util]
@@ -6,14 +6,14 @@
             [hypercrud-service.datomic-util :refer [latest-tx]]
             [hypercrud-service.collection-json :as cj]
             [hypercrud-service.api :as api]
-            [streaker-service.page :as page]
-            [streaker-service.endpoints]))
+            [seattle-service.page :as page]
+            [seattle-service.endpoints]))
 
 
 (defn api-get [{{:keys [tx]} :query-params}]
   (let [tx (if tx (Long/parseLong tx) (latest-tx))]
-    (-> (api/index streaker-service.endpoints/endpoints tx)
-        (#(cj/->ReadCollectionResponse :streaker-service.routes/api-get nil % [] nil tx)))))
+    (-> (api/index seattle-service.endpoints/endpoints tx)
+        (#(cj/->ReadCollectionResponse :seattle-service.routes/api-get nil % [] nil tx)))))
 
 
 (defn mk-coll-get [coll-route item-route query typeinfo]
@@ -27,7 +27,7 @@
 
 
 (defn mk-coll-post [typeinfo]
-  (fn [{:keys [:streaker-service.pedestal-util/body-params]}]
+  (fn [{:keys [:seattle-service.pedestal-util/body-params]}]
     ;; Should we also check tx (to detect concurrent modifications of collection)?
     ;; I don't think that makes sense on item creation
     (-> (api/collection-create body-params typeinfo)
@@ -43,7 +43,7 @@
 (defn mk-item-put [typeinfo]
   (fn [{{:keys [tx]} :query-params
         {:keys [id]} :path-params
-        :keys [:streaker-service.pedestal-util/body-params]}]
+        :keys [:seattle-service.pedestal-util/body-params]}]
     (-> (api/entity-update (Long/parseLong id)
                            (Long/parseLong tx) ;; to detect concurrent modifications
                            body-params
@@ -76,5 +76,5 @@
 
        ~@(map (fn [[k [query typeinfo]]]
                 (route k query typeinfo))
-              streaker-service.endpoints/endpoints)
+              seattle-service.endpoints/endpoints)
        ]]]))

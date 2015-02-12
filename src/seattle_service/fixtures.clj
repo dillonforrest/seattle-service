@@ -1,4 +1,4 @@
-(ns streaker-service.fixtures
+(ns seattle-service.fixtures
   (:require [datomic.api :as d]
             [datomico.core :as dc]
-            [streaker-service.models.question :as question]))
+            [seattle-service.models.question :as question]))

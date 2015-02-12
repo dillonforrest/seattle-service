@@ -1,4 +1,4 @@
-(ns streaker-service.page
+(ns seattle-service.page
   (:require [ring.util.response :as ring-resp]))
 
 
