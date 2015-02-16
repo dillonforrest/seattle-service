@@ -1,14 +1,14 @@
 (ns seattle-service.server
   (:gen-class) ; for -main method in uberjar
   (:require [io.pedestal.http :as bootstrap]
-            [hypercrud-service.hypercrud :as hypercrud]
+            [hypercrud-service.dependencies :refer [HypercrudDependencies]]
             [seattle-service.endpoints]
             [seattle-service.service]
             [seattle-service.service-instance]))
 
 
 (extend-type Object
-  hypercrud/HypercrudDependencies
+  HypercrudDependencies
   (deduce-route-name [ent]
     (seattle-service.endpoints/deduce-route-name ent))
   (service-instance [_]
