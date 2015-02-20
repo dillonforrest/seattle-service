@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [com.datomic/datomic-free "0.9.5067"]
                  [datomico "0.2.0"]
-                 [hypercrud-service "0.1.0-SNAPSHOT"]
+                 [org.hypercrud/hypercrud-service "0.1.0-SNAPSHOT"]
                  [io.pedestal/pedestal.service "0.3.1"]
                  [io.pedestal/pedestal.service-tools "0.3.1"]
                  [io.pedestal/pedestal.jetty "0.3.1"]
