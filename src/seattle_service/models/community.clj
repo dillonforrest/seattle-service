@@ -1,18 +1,6 @@
 (ns seattle-service.models.community)
 
 
-(comment
-  :datatype :ref :many :true ;; multiselect combobox (entity or dict or enum)
-  :datatype :string :many :true ;; list of strings
-  :datatype :ref ;; combobox (entity or dict or enum)
-
-  ;; Then all :ref can go through lazy-cj-item, including normalizing any
-  ;; datomic idents into their lazy-cj-items
-
-  ;; Note that all :ref's have :option's
-
-  )
-
 (defn typeinfo [& [instance]]
   [{:name :community/name :prompt "Name" :datatype :string :set false}
    {:name :community/url :prompt "Url" :datatype :string :set false}
