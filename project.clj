@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [com.datomic/datomic-free "0.9.5067"]
+                 [com.datomic/datomic-free "0.9.5067" :exclusions [org.slf4j/slf4j-nop]]
                  [datomico "0.2.0"]
                  [org.hypercrud/hypercrud-service "0.1.0-SNAPSHOT"]
                  [io.pedestal/pedestal.service "0.3.1"]
@@ -23,5 +23,4 @@
                    :source-paths ["dev"]}}
   :repl-options {:init-ns user}
   :main ^{:skip-aot true} streaker-service.server
-  :jvm-opts ["-Xdebug" "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044"]
   )
