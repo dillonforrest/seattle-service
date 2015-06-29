@@ -5,38 +5,51 @@
             [seattle-service.models.community-type]
             [seattle-service.models.community-orgtype]
             [seattle-service.models.region]
-            [datomic.api :as d]))
+            [datomic.api :as d]
+            [hypercrud-service.datomic-util :as datomic-util]))
 
 
 (def endpoints
   ;; Should also store :rel and :prompt here.
   ;; For now, rel must line up by hand with the key here
-  {"communities" ['[:find ?e :where [?e :community/name]]
-                  seattle-service.models.community/typeinfo]
+  {"communities"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :community/name]] tx))
+    :typeinfo-fn (fn [_] seattle-service.models.community/typeinfo)}
 
-   "neighborhoods" ['[:find ?e :where [?e :neighborhood/name]]
-                    seattle-service.models.neighborhood/typeinfo]
+   "neighborhoods"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :neighborhood/name]] tx))
+    :typeinfo-fn (fn [_] seattle-service.models.neighborhood/typeinfo)}
 
-   "districts" ['[:find ?e :where [?e :district/name]]
-                seattle-service.models.district/typeinfo]
+   "districts"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :district/name]] tx))
+    :typeinfo-fn (fn [_] seattle-service.models.district/typeinfo)}
 
-   "enums/community.orgtype" ['[:find ?id
-                                :where [?id :db/ident ?ident]
-                                [(namespace ?ident) ?ns]
-                                [(= ?ns "community.orgtype")]]
-                              seattle-service.models.community-orgtype/typeinfo]
+   "enums/community.orgtype"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q
+                        '[:find ?id
+                          :where [?id :db/ident ?ident]
+                          [(namespace ?ident) ?ns]
+                          [(= ?ns "community.orgtype")]]
+                        tx))
+    :typeinfo-fn (fn [_] seattle-service.models.community-orgtype/typeinfo)}
 
-   "enums/community.type" ['[:find ?id
-                             :where [?id :db/ident ?ident]
-                             [(namespace ?ident) ?ns]
-                             [(= ?ns "community.type")]]
-                           seattle-service.models.community-type/typeinfo]
+   "enums/community.type"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q
+                        '[:find ?id
+                          :where [?id :db/ident ?ident]
+                          [(namespace ?ident) ?ns]
+                          [(= ?ns "community.type")]]
+                        tx))
+    :typeinfo-fn (fn [_] seattle-service.models.community-type/typeinfo)}
 
-   "enums/region" ['[:find ?id
-                     :where [?id :db/ident ?ident]
-                     [(namespace ?ident) ?ns]
-                     [(= ?ns "region")]]
-                   seattle-service.models.region/typeinfo]
+   "enums/region"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q
+                        '[:find ?id
+                          :where [?id :db/ident ?ident]
+                          [(namespace ?ident) ?ns]
+                          [(= ?ns "region")]]
+                        tx))
+    :typeinfo-fn (fn [_] seattle-service.models.region/typeinfo)}
 
    })
 
