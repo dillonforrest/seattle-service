@@ -1,7 +1,12 @@
-(ns seattle-service.models.community)
+(ns seattle-service.models.community
+  (:require [hypercrud-service.collection-json :as cj]))
 
 
-(defn typeinfo [& [instance]]
+(defrecord Community [ent])
+
+(defmethod cj/route-for-entity Community [record] :communities-item)
+
+(defmethod cj/typeinfo Community [record tx]
   [{:name :community/name :prompt "Name" :datatype :string :set false}
    {:name :community/url :prompt "Url" :datatype :string :set false}
    {:name :community/neighborhood :prompt "Neighborhood" :datatype :ref :set false
@@ -12,11 +17,3 @@
    {:name :community/type :prompt "Type" :datatype :ref :set true
     :options {:label-prop :db/ident :route :enums/community.type}}
    ])
-
-
-;; Url to the options, or inline options
-;; But if we're linking to a collection, we need the route only.
-;; Can use the CJ standard to execute queries.
-
-;; id on the client is always the href of the option, if i can make the
-;; service understand that or parse the entid out of the request

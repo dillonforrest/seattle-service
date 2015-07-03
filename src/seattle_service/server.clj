@@ -9,8 +9,6 @@
 
 (extend-type Object
   HypercrudDependencies
-  (deduce-route-name [ent]
-    (seattle-service.endpoints/deduce-route-name ent))
   (service-instance [_]
     seattle-service.service-instance/service-instance))
 

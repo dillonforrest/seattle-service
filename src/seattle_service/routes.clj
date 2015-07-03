@@ -19,7 +19,7 @@
                        hypercrud/wrap-hypercrud
                        ] ;; are these out of order??
 
-       ~@(map (fn [[k {:keys [query-fn typeinfo-fn]}]]
-                (hypercrud/route k query-fn typeinfo-fn))
+       ~@(map (fn [[k {:keys [query-fn type-fn]}]]
+                (hypercrud/route k query-fn type-fn))
               seattle-service.endpoints/endpoints)
        ]]]))
