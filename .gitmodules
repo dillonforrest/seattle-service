@@ -1,0 +1,6 @@
+[submodule "checkouts/hypercrud-service"]
+	path = checkouts/hypercrud-service
+	url = git@github.com:hypercrud/hypercrud-service.git
+[submodule "checkouts/pedestal"]
+	path = checkouts/pedestal
+	url = git@github.com:hypercrud/pedestal.git
