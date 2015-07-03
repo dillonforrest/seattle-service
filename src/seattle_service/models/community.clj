@@ -2,11 +2,9 @@
   (:require [hypercrud-service.collection-json :as cj]))
 
 
-(defrecord Community [ent])
+(defmethod cj/route-for-entity :Community [typetag] :communities-item)
 
-(defmethod cj/route-for-entity Community [record] :communities-item)
-
-(defmethod cj/typeinfo Community [record tx]
+(defmethod cj/typeinfo :Community [typetag tx & [record]]
   [{:name :community/name :prompt "Name" :datatype :string :set false}
    {:name :community/url :prompt "Url" :datatype :string :set false}
    {:name :community/neighborhood :prompt "Neighborhood" :datatype :ref :set false

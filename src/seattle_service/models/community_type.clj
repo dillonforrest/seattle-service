@@ -2,10 +2,8 @@
   (:require [hypercrud-service.collection-json :as cj]))
 
 
-(defrecord CommunityType [ent])
+(defmethod cj/route-for-entity :CommunityType [typetag] :enums/community.type-item)
 
-(defmethod cj/route-for-entity CommunityType [record] :enums/community.type-item)
-
-(defmethod cj/typeinfo CommunityType [record tx]
+(defmethod cj/typeinfo :CommunityType [typetag tx & [record]]
   [{:name :db/ident :prompt "Ident" :datatype :keyword :set false}
    ])

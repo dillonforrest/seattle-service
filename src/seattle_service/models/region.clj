@@ -2,9 +2,7 @@
   (:require [hypercrud-service.collection-json :as cj]))
 
 
-(defrecord Region [ent])
+(defmethod cj/route-for-entity :Region [typetag] :enums/region-item)
 
-(defmethod cj/route-for-entity Region [record] :enums/region-item)
-
-(defmethod cj/typeinfo Region [record tx]
+(defmethod cj/typeinfo :Region [typetag tx & [record]]
   [{:name :db/ident :prompt "Ident" :datatype :keyword :set false}])

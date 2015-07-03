@@ -14,15 +14,15 @@
   ;; For now, rel must line up by hand with the key here
   {"communities"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :community/name]] tx))
-    :type-fn community/->Community}
+    :typetag :Community}
 
    "neighborhoods"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :neighborhood/name]] tx))
-    :type-fn neighborhood/->Neighborhood}
+    :typetag :Neighborhood}
 
    "districts"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q '[:find ?e :where [?e :district/name]] tx))
-    :type-fn district/->District}
+    :typetag :District}
 
    "enums/community.orgtype"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q
@@ -31,7 +31,7 @@
                           [(namespace ?ident) ?ns]
                           [(= ?ns "community.orgtype")]]
                         tx))
-    :type-fn community-orgtype/->CommunityOrgType}
+    :typetag :CommunityOrgType}
 
    "enums/community.type"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q
@@ -40,7 +40,7 @@
                           [(namespace ?ident) ?ns]
                           [(= ?ns "community.type")]]
                         tx))
-    :type-fn community-type/->CommunityType}
+    :typetag :CommunityType}
 
    "enums/region"
    {:query-fn (fn [tx] (datomic-util/datomic-simple-q
@@ -49,7 +49,7 @@
                           [(namespace ?ident) ?ns]
                           [(= ?ns "region")]]
                         tx))
-    :type-fn region/->Region}
+    :typetag :Region}
 
    })
 
