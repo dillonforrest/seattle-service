@@ -7,5 +7,5 @@
 (defmethod cj/typeinfo :District [typetag tx & [record]]
   [{:name :district/name :prompt "Name" :datatype :string :set false}
    {:name :district/region :prompt "Region" :datatype :ref :set false
-    :options {:label-prop :db/ident :typetag :Region}}
+    :options {:label-prop :db/ident :typetag :Region :route :enums/region}}
    ])

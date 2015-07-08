@@ -8,10 +8,10 @@
   [{:name :community/name :prompt "Name" :datatype :string :set false}
    {:name :community/url :prompt "Url" :datatype :string :set false}
    {:name :community/neighborhood :prompt "Neighborhood" :datatype :ref :set false
-    :options {:label-prop :neighborhood/name :typetag :Neighborhood}}
+    :options {:label-prop :neighborhood/name :typetag :Neighborhood :route :neighborhoods}}
    {:name :community/category :prompt "Category" :datatype :string :set true}
    {:name :community/orgtype :prompt "Org type" :datatype :ref :set false
-    :options {:label-prop :db/ident :typetag :CommunityOrgType}}
+    :options {:label-prop :db/ident :typetag :CommunityOrgType :route :enums/community.orgtype}}
    {:name :community/type :prompt "Type" :datatype :ref :set true
-    :options {:label-prop :db/ident :typetag :CommunityType}}
+    :options {:label-prop :db/ident :typetag :CommunityType :route :enums/community.type}}
    ])
