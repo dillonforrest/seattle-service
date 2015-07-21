@@ -23,4 +23,6 @@
                    :source-paths ["dev"]}}
   :repl-options {:init-ns user}
   :main ^{:skip-aot true} streaker-service.server
+
+  :jvm-opts ["-Xdebug" "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1046"]
   )
