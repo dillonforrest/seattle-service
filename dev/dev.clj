@@ -67,3 +67,5 @@
   (start-dev-db)
   (start)
   (watch))
+
+(-main)

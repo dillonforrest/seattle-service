@@ -1,4 +1,49 @@
 [
+
+ ;; MVMVP
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/email
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP owner's email"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/value-prop
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP's value proposition"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP's name"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/header
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP's header"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/subheader
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP's subheader"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :mvmvp/steps
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "An MVMVP's 3 steps"
+  :db.install/_attribute :db.part/db}
+
  ;; community
 
  {:db/id #db/id[:db.part/db]

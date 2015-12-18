@@ -5,6 +5,7 @@
             [seattle-service.models.community-type :as community-type]
             [seattle-service.models.community-orgtype :as community-orgtype]
             [seattle-service.models.region :as region]
+            [seattle-service.models.mvmvp :as mvmvp]
             [datomic.api :as d]
             [hypercrud-service.datomic-util :as datomic-util]))
 
@@ -50,6 +51,11 @@
                           [(= ?ns "region")]]
                         tx))
     :typetag :Region}
+
+   "mvmvps"
+   {:query-fn (fn [tx] (datomic-util/datomic-simple-q
+                         '[:find ?e :where [?e :mvmvp/email]] tx))
+    :typetag :Mvmvp}
 
    })
 

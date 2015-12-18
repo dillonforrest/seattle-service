@@ -7,6 +7,7 @@
 
 (def routes
   (expand-routes
-   `[[["/echo" {:any page/echo}]
-      ~(hypercrud/route "/api" seattle-service.endpoints/endpoints)
-      ]]))
+   `[[["/" {:any page/index}]
+      ["/echo" {:any page/echo}]
+      ~(hypercrud/route "/api" seattle-service.endpoints/endpoints)]
+     ]))
